@@ -170,10 +170,12 @@ def read_nodes(doc):
     #       <tag k="highway" v="crossing"/>
     #       <tag k="source" v="Bing"/>
     #   </node>
+    nodes = []
     nodes = [_element_to_dict(xmlnode) for xmlnode in doc.findall('node')]
-    nodes = _dict_to_dataframe(nodes)
-    nodes['lon'] = nodes['lon'].astype(float)
-    nodes['lat'] = nodes['lat'].astype(float)
+    if nodes:
+        nodes = _dict_to_dataframe(nodes)
+        nodes['lon'] = nodes['lon'].astype(float)
+        nodes['lat'] = nodes['lat'].astype(float)
 
     return nodes
 
