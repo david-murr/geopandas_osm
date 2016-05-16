@@ -158,7 +158,9 @@ def read_osm(content, render=True, **kwargs):
     data = OSMData(nodes, waynodes, waytags, relmembers, reltags)
     
     if render:
-        data = render_to_gdf(data, **kwargs)
+        if len(nodes) != 0:
+            data = render_to_gdf(data, **kwargs)
+        else: data = []
 
     return data
 
