@@ -273,7 +273,7 @@ def read_relations(doc):
 def render_to_gdf(osmdata, drop_untagged=True):
     nodes = render_nodes(osmdata.nodes, drop_untagged)
     ways = render_ways(osmdata.nodes, osmdata.waynodes, osmdata.waytags)
-
+    print(ways)
     if nodes is None:
         nodes = ways
     else:
