@@ -273,7 +273,8 @@ def read_relations(doc):
 def render_to_gdf(osmdata, drop_untagged=True):
     nodes = render_nodes(osmdata.nodes, drop_untagged)
     ways = render_ways(osmdata.nodes, osmdata.waynodes, osmdata.waytags)
-    print(ways == 'NaN')
+    print(ways.geometry == 'NaN')
+    ways = ways[ways.geometry != 'NaN']
     if ways is not None:
         # We should get append working
         nodes = nodes.append(ways).set_geometry('geometry', crs=_crs)
