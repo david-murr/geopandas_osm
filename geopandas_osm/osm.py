@@ -277,7 +277,6 @@ def render_to_gdf(osmdata, drop_untagged=True):
 #    ways = ways[ways.geometry.notnull()]
     if ways is not None:
         # We should get append working
-        print(ways)
         nodes = nodes.append(ways).set_geometry('geometry', crs=_crs)
 
     return nodes
